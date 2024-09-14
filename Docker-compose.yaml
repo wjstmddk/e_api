@@ -1,0 +1,53 @@
+version: '3.8'
+
+services:
+  frontend:
+    image: e_api:frontend
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "80:3000"
+    depends_on:
+      - backend
+    networks:
+      - e_api
+
+  backend:
+    image: e_api:backend
+    volumes:
+      - ./backend:/app
+    ports:
+      - "3000:80"
+    environment:
+      - DATABASE_URL=mysql+pymysql://takealook:tmddk0908@db:3306/apidb
+    depends_on:
+      - db
+    networks:
+      - e_api
+    restart: always
+
+  db:
+    image: mysql:latest
+    volumes:
+      - db_data:/var/lib/mysql
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: 1234
+      MYSQL_DATABASE: apidb
+      MYSQL_USER: takealook
+      MYSQL_PASSWORD: tmddk0908
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - e_api
+
+networks:
+  e_api:
+
+volumes:
+  db_data:
