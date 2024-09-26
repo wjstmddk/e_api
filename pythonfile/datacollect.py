@@ -36,6 +36,7 @@ for i in tqdm(range(len(rankuser.topRanks))):
     for i in range(len(gamedf)):
         insertdf=[]
         insertdf.append(gamedf.gameId[i])
+        insertdf.append(gamedf.userNum[i])
         insertdf.append(gamedf.nickname[i])
         insertdf.append(gamedf.mmrAfter[i])
         insertdf.append(gamedf.matchingMode[i])
