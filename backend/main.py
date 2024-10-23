@@ -56,5 +56,9 @@ async def receive_data(inputdata:inputdata):
     session.close()
     return {"message": "Data received", "data": inputdata}
 
+@app.get("/userfound")
+async def userfound(username):
+    print(username)
+    
 # if __name__=="__main__":
 #     uvicorn.run(app,host="127.0.0.1",port=80)
