@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   frontend:
-    image: e_api:frontend
+    image: takealook891/e_api:frontend
     volumes:
       - ./frontend:/app
       - /app/node_modules
@@ -16,7 +16,7 @@ services:
       - e_api
 
   backend:
-    image: e_api:backend
+    image: takealook891/e_api:backend
     volumes:
       - ./backend:/app
     ports:
@@ -30,7 +30,7 @@ services:
     restart: always
 
   db:
-    image: mysql:latest
+    image: takealook891/mysql:latest
     volumes:
       - db_data:/var/lib/mysql
     ports:

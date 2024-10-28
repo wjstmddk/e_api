@@ -9,6 +9,7 @@ import uvicorn
 from pydantic import BaseModel
 from db.database import enginconn
 from db.models import Test
+from userdata.userdata import getdata
 
 enginee=enginconn()
 app=FastAPI()
@@ -17,6 +18,8 @@ session=enginee.sessionmaker()
 class Data(BaseModel):
     id: int
     connect_status: int
+class user(BaseModel):
+    content: str
     
 class inputdata(BaseModel):
     connect_status: int
@@ -56,9 +59,10 @@ async def receive_data(inputdata:inputdata):
     session.close()
     return {"message": "Data received", "data": inputdata}
 
-@app.get("/userfound")
-async def userfound(username):
-    print(username)
-    
+@app.post("/userfound")
+async def userfound(user:user):
+    print(user.content)
+    userdata=getdata(user.content)
+    return{"message":"userdata","data":userdata.to_dict(orient="records")}
 # if __name__=="__main__":
 #     uvicorn.run(app,host="127.0.0.1",port=80)

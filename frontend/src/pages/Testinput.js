@@ -17,14 +17,7 @@ function SendData(){
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        // console.log(formData)
-        // console.log(typeof(formData.connect_status))
-        // console.log(typeof(Object.keys(formData)))
-        // console.log(Object.keys(formData))
         axios.post('http://localhost:3000/getdata',formData,{
-            // transformRequest:[(data,headers)=>{
-            //     return data;
-            // }],
             headers:{'Context-Type': 'application/json'}
         })
             .then((response)=>{
