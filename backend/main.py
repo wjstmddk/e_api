@@ -61,8 +61,11 @@ async def receive_data(inputdata:inputdata):
 
 @app.post("/userfound")
 async def userfound(user:user):
-    print(user.content)
-    userdata=getdata(user.content)
-    return{"message":"userdata","data":userdata.to_dict(orient="records")}
-# if __name__=="__main__":
-#     uvicorn.run(app,host="127.0.0.1",port=80)
+    # print(user.content)
+    userdf=getdata(user.content)
+    print(userdf)
+    # userdata=userdf.to_dict(orient="records")
+    # print(userdf)
+    return userdf
+if __name__=="__main__":
+    uvicorn.run(app,host="127.0.0.1",port=80)

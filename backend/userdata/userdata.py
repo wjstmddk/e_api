@@ -23,7 +23,7 @@ def getdata(username):
     gamedata=usergamedf.userGames
     gamelist=gamedata.values
     gamedf=gamelist
-    print(gamedf[0])
+    # print(gamedf[0])
     usergames=[]
     for j in range(len(gamedf)):
         insertdf=[]
@@ -61,5 +61,5 @@ def getdata(username):
         column=['gameId','userNum','nickname','matchingMode','seasonId','skinCode','characterLevel','playerKill','playerAssistant','equipment1','equipment2','equipment3','equipment4','equipment5','serverName','teamNumber','victory','giveUp','killer','killerCharacter','routeIdOfStart']
         rdatadf=pd.DataFrame(usergames,columns=column)
         runiquedf = rdatadf.drop_duplicates(subset=['gameId', 'userNum'])
-        return rdatadf
-    print(rdatadf)
+    return usergames
+    # print(rdatadf)

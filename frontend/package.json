@@ -19,6 +19,7 @@
   },
   "scripts": {
     "start": "WEBPACK_POLLING=true react-scripts start",
+    "dev":"webpack-dev-server",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -41,5 +42,17 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://backend:80"
+  "proxy": "http://backend:80",
+  "devDependencies": {
+    "@babel/core": "^7.26.0",
+    "@babel/preset-env": "^7.26.0",
+    "@babel/preset-react": "^7.25.9",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
+    "babel-loader": "^9.2.1",
+    "react-app-rewired": "^2.2.1",
+    "react-refresh": "^0.14.2",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
 }

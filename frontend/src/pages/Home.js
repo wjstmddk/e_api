@@ -6,12 +6,12 @@ function Home(){
     
     const sendusername= async()=>{
         try{
-            console.log(response.data)
             const res=await axios.post('http://localhost:3000/userfound',{
                 content:inputValue,
             });
+            console.log(response)
             setResponse(res.data.receive_content);
-            console.log(setResponse)
+            console.log(response)
         }catch(error){
             console.error('Error sending string',error)
         }
@@ -23,6 +23,9 @@ function Home(){
             value={inputValue} 
             onChange={(e)=> setInputValues(e.target.value)}/>
             <button onClick={sendusername}>검색</button>
+            <div>
+                <p>{response}</p>
+            </div>
             <p>Eternal Return</p>
         </div>
     );
