@@ -67,5 +67,5 @@ async def userfound(user:user):
     # userdata=userdf.to_dict(orient="records")
     # print(userdf)
     return userdf
-if __name__=="__main__":
-    uvicorn.run(app,host="127.0.0.1",port=80)
+# if __name__=="__main__":
+#     uvicorn.run(app,host="127.0.0.1",port=80)

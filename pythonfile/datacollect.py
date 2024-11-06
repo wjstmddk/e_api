@@ -100,9 +100,6 @@ for n in tqdm(range(len(rankuser.topRanks))):
                     rdatadf=pd.DataFrame(finalgamedf,columns=column)
                     runiquedf = rdatadf.drop_duplicates(subset=['gameId', 'userNum'])
                     runiquedf.to_sql('e_data', con=engine, if_exists='append', index=False)
-                    # print(len(gamelist))
-                    # print("complet",j,i)
-                # result = connection.execute(text("DELETE FROM e_data WHERE gameId NOT IN (SELECT * FROM (SELECT MIN(gameId) FROM your_table GROUP BY gameId) AS t"))
                 time.sleep(10)
                 # print("next", next)
                 user_url = f'https://open-api.bser.io/v1/user/games/{userNum}?next={next}'
