@@ -17,3 +17,6 @@ for j in tqdm(range(len(gamedf.gameId))):
     time.sleep(1)
 gamelist=pd.DataFrame(gamedatalist)
 gamelist=gamelist.userGames
+
+package start
+ //"WEBPACK_POLLING=true, react-scripts start",

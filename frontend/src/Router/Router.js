@@ -5,6 +5,7 @@ import Layout from "../component/layout/Layout.tsx"
 import Home from "../pages/Home.js"
 import Test from "../pages/Test.js"
 import Testinput from "../pages/Testinput.js"
+import React from 'react';
 
 function App() {
   return (

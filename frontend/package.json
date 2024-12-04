@@ -6,7 +6,6 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@vercel/speed-insights": "^1.0.12",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "react": "^18.3.1",
@@ -18,9 +17,9 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "dev":"webpack-dev-server",
-    "build": "react-scripts build",
+    "start":  "set WEBPACK_POLLING=true && webpack serve --config webpack.config.js",
+    "dev": "webpack --config webpack.config.js",
+    "build": "webpack --mode production",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -49,8 +48,10 @@
     "@babel/preset-react": "^7.25.9",
     "@pmmmwh/react-refresh-webpack-plugin": "^0.5.15",
     "babel-loader": "^9.2.1",
-    "react-app-rewired": "^2.2.1",
+    "css-loader": "^7.1.2",
+    "html-loader": "^5.1.0",
     "react-refresh": "^0.14.2",
+    "style-loader": "^4.0.0",
     "webpack": "^5.96.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.1.0"
