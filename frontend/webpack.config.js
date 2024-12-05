@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin=require("html-webpack-plugin");
 const ReactRefreshWebpackPlugin = require('@pmmmwh/react-refresh-webpack-plugin');
+const path = require('path');
 
 module.exports={
     mode: "development",
@@ -11,11 +12,22 @@ module.exports={
         host: '0.0.0.0',
         port: 3000,
         open: true,
+        client:{
+            webSocketURL:{
+                hostname: 'localhost',
+                port:80,
+                protocol:'ws'
+            }
+        },
+        static: {
+            directory: path.join(__dirname, 'public'), // 정적 파일 경로 명시
+        },
+        historyApiFallback: true,
     },
     module:{
         rules:[
             {
-                test:/\.jsx?/,
+                test:/\.jsx?$/,
                 loader:'babel-loader',
                 options:{
                     presets:['@babel/preset-env','@babel/preset-react'],
@@ -47,12 +59,13 @@ module.exports={
         ]
     },
     resolve:{
-        extensions: [".js", ".jsx",".ts",".tsx"]
+        extensions: [".js", ".jsx",".ts",".tsx",'.json']
     },
     plugins: [
         new ReactRefreshWebpackPlugin(),
         new HtmlWebpackPlugin({
             template: './public/index.html',
+            favicon:'./public/favicon.ico',
         })
     ]
 };
