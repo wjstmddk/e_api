@@ -6,10 +6,14 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    stdin_open: true
     ports:
       - "80:3000"
     environment:
+      - WDS_SOCKET_HOST=127.0.0.1 
       - CHOKIDAR_USEPOLLING=true
+      - WATCHPACK_POLLING=true 
+      # - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development 
     depends_on:
       - backend
@@ -22,7 +26,7 @@ services:
       - ./backend:/app
     ports:
       - "3000:80"
-    environment:
+    environment: 
       - DATABASE_URL=mysql+pymysql://takealook:tmddk0908@db:3306/apidb
     depends_on:
       - db

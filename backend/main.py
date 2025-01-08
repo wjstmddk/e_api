@@ -63,8 +63,9 @@ async def receive_data(inputdata:inputdata):
 async def userfound(user:user):
     # print(user.content)
     userdf=getdata(user.content)
+    print("main")
     print(userdf)
-    # userdata=userdf.to_dict(orient="records")
+    userdf=userdf.to_dict(orient="records")
     # print(userdf)
     return userdf
 # if __name__=="__main__":
