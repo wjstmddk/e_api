@@ -3,13 +3,13 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 function Home(){         
     const [inputValue,setInputValue]=useState('');
-    const [response, setResponse]=useState('');
-    const [resdata,setResdata]=useState('');
-    const [keylist,setKeylist]=useState('')
+    const [responseData, setResponseData]=useState('');
+    const [resultdata,setResultData]=useState('');
+    const [keylistData,setKeylistData]=useState('')
     
     useEffect(() => {
-        console.log('Updated response:', response);
-    }, [response]);
+        console.log('Updated response:', responseData);
+    }, [responseData]);
 
     const sendusername= async()=>{
         try{
@@ -17,11 +17,12 @@ function Home(){
                 content:inputValue,
             });
             // console.log(res)
-            setResponse(res.data)
+            setResponseData(res.data)
             // console.log(res.data)
             // console.log(Object.keys(res.data).length)
-            setKeylist(Object.keys(res.data[0])[0])
+            setKeylistData(Object.keys(res.data[0]))
             // console.log("233")
+            // console.log(Object.keys(res.data[0])[1])
             resopen()
             // console.log(res)
         }catch(error){
@@ -32,20 +33,21 @@ function Home(){
     const resopen =()=>{
         console.log("resopen")
         const resdata=[];
-        console.log(response[0])
+        console.log(responseData[0])
         // console.log(Object.keys(response).length)
-        for(let i=0; i < Object.keys(response).length;i++){
-            console.log("resopen1")
-            const resjson=JSON.stringify(response[i])
-            console.log(resjson.length)
-            for(let j=0;j<Object.keys(resjson.length);j++){
-                console.log(i)
-                let keydata=Object.keys(resjson)
-                console.log(keydata[1][0])
-                resdata.push(<span key={i}>{resjson.keydata[i]+"/"}</span>)
+        for(let i=0; i < Object.keys(responseData).length;i++){
+            // console.log("resopen1")
+            console.log(responseData[i].gameId)
+            for(let j=0;j<keylistData.length;j++){
+                // console.log(i)
+                // const key=keylist[j]
+                // console.log(keylist[j])
+                // console.log(response[i][keylist[j]])
+                resdata.push(<span key={i}>{keylistData[j]+":"+responseData[i][keylistData[j]]+" ,"}</span>)
                 }
+                resdata.push(<br/>);
         }
-        setResdata(resdata)
+        setResultData(resdata)
     };
 
     return(
@@ -55,8 +57,7 @@ function Home(){
             value={inputValue} 
             onChange={(e)=> setInputValue(e.target.value)}/>
             <button onClick={sendusername}>검색</button>
-            {/* <button onClick={resopen()}>결과확인</button> */}
-            <div>{resdata}</div>
+            <div>{resultdata}</div>
             <p>Eternal Return</p>
         </div>
     );

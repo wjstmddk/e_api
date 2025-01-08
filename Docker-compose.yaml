@@ -13,7 +13,6 @@ services:
       - WDS_SOCKET_HOST=127.0.0.1 
       - CHOKIDAR_USEPOLLING=true
       - WATCHPACK_POLLING=true 
-      # - CHOKIDAR_USEPOLLING=true
       - NODE_ENV=development 
     depends_on:
       - backend
